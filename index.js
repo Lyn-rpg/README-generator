@@ -6,78 +6,40 @@ const inquirer = require('inquirer');
 const fs = require('fs'); 
 const generate = require('./utils/generateMarkdown.js');
 
-const promptUser = () => {
+const questions = () => {
     return inquirer.prompt([
 
                          //PROJECT NAME/TITLE/DESCRIPTION
         {
             type: 'input',
             name: 'name',
-            message: 'Please enter the name of your project (Required)',
-             //validate input entry and return a string if the input value is empty
-             validate: nameInput => {
-                 if (nameInput) {
-                     return true;
-                 } else {
-                     console.log("I can't generate a README without a project title!");
-                     return false;
-                 }
-             }
+            message: 'Please enter the name of your project',
         },
 
         {
             type: 'input',
             name: 'description',
-            message: 'Please give your project a description (Required)',
-            validate: projectDesc => {
-                if (projectDesc) {
-                    return true;
-                } else {
-                    console.log("I can't generate a README without a description!");
-                    return false;
-                }
-            }
+            message: 'Please give your project a description',
         },
                            //INSTALLATION/USAGE //
         {
             type: 'input',
             name: 'installation',
-            message: 'How do you install your application? (Required)',
-            validate: projectInst => {
-                if (projectInst) {
-                    return true;
-                } else {
-                    console.log("I can't generate a README without installation instructions!");
-                }
-            }
-
+            message: 'How do you install your application?',
         },
 
         {
             type: 'input',
             name: 'usage',
-            messsage: 'How do you use your application? (Required)',
-            validate: projectUsg => {
-                if (projectUsg) {
-                    return true;
-                } else {
-                    console.log("I can't generate a README without knowig how the application is used!");
-                }
-            }
+            messsage: 'How do you use your application?',
         },
                          // LICENSE //
         {
-            type: 'input',
+            type: 'list',
             name: 'license',
-            message: 'What license did you use for this project? (Required)',
-            validate: projectLis => {
-                if (projectLis) {
-                    return true;
-                } else {
-                    console.log("I can't generate a README without a license!");
-                    return false;
-                }
-            }
+            message: 'What license did you use for this project?',
+            choices: ['MIT'],
+            default: ["MIT"],
         },
                           // TESTING/CONTRIBUTION //
         {
@@ -89,37 +51,25 @@ const promptUser = () => {
         {
             type: 'input',
             name: 'tests',
-            message: 'How can tests be updated?',
+            message: 'What commands run tests?',
         },
 
                            // GH USERNAME/EMAIL //
         {
             type: 'input',
             name: 'username',
-            message: 'What is your Github username? (Required)',
-            validate: projectUser => {
-                if (projectUser) {
-                    return true;
-                } else {
-                    console.log("I can't generate a README without a GH username!");
-                }
-            }
+            message: 'What is your Github username?',
         },
  
         {
             type: 'input',
             name: 'email',
-            message: "What is a good email for users and contributors to send questions? (Required)",
-            validate: ProjectEm => {
-                if (projectEm) {
-                    return true; 
-                } else {
-                    console.log("I can't generate a README without an email address!");
-                }
-            }
+            message: "What is a good email for users and contributors to send questions?",
+            
         },
     ])
-};
+
+}
 
 // function to write README file using file system 
 const writeFile = data => {
@@ -136,10 +86,10 @@ const writeFile = data => {
 }; 
 
 // function call to initialize program
-promptUser()
+questions()
 // getting user answers 
 .then(answers => {
-    return generatePage(answers);
+    return generate(answers);
 })
 // using data to display on page 
 .then(data => {
@@ -148,6 +98,5 @@ promptUser()
 // catching errors 
 .catch(err => {
     console.log(err)
-});
-
+})
 
