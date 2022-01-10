@@ -12,7 +12,7 @@ const questions = () => {
                          //PROJECT NAME/TITLE/DESCRIPTION
         {
             type: 'input',
-            name: 'name',
+            name: 'title',
             message: 'Please enter the name of your project',
         },
 
@@ -25,17 +25,17 @@ const questions = () => {
         {
             type: 'input',
             name: 'installation',
-            message: 'How do you install your application?',
+            message: 'What technologies are needed to run this application?',
         },
 
         {
             type: 'input',
             name: 'usage',
-            messsage: 'How do you use your application?',
+            messsage: 'What is this application used for?',
         },
                          // LICENSE //
         {
-            type: 'list',
+            type: 'checkbox',
             name: 'license',
             message: 'What license did you use for this project?',
             choices: ['MIT'],
@@ -57,7 +57,7 @@ const questions = () => {
                            // GH USERNAME/EMAIL //
         {
             type: 'input',
-            name: 'username',
+            name: 'Github username',
             message: 'What is your Github username?',
         },
  

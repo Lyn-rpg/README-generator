@@ -1,4 +1,4 @@
-# undefined
+# My Project
 ## Table of Contents:
 1. [Description](#description) 
 2. [Installation](#Installation)
@@ -11,17 +11,17 @@
 9. [Questions](Questions)
 
 ## Description
-Generate README file from command line 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 
 
 
 ## Installation
-Enter node index.js from command line
+inquirer
 
 
 
 ## Usage
-See video demonstration
+Generate a readme for any project
 
 
 
@@ -36,7 +36,7 @@ npm run test
 
 
 ## License
- 
+![License: MIT](mg.shields.io/badge/license-MIT-blue)
 
 
 
